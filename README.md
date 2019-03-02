@@ -4,6 +4,14 @@ Modal window
 
 ### Settings
 
+
+Button
+```
+   <p style="text-align: center;"><a href="#"  class="modal-open" title="">open</a></p>
+```
+
+
+
 module.init(1);
 ```
   <div data-supermodal ='1'>
