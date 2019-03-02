@@ -1,16 +1,13 @@
 # Modal window
 
 
-### Settings
-
-
-Button
+### Button
 ```
    <p style="text-align: center;"><a href="#"  class="modal-open" title="">open</a></p>
 ```
 
 
-module.init(); - create demo modal window
+### module.init(); ( create demo modal window )
 
 
 
@@ -21,7 +18,7 @@ for demo create in your html this
 
 
 
-module.init(1);
+### module.init(1);
 ```
   <div data-supermodal ='1'>
     <div class="modal-overlay modal_closed"></div>
@@ -54,7 +51,7 @@ module.init(1);
     </div>
     </div>
 ```
-module.init(2);
+### module.init(2);
 
 ```
     <div data-supermodal ='2' >
@@ -77,7 +74,7 @@ module.init(2);
     </div>
 ```
 
-module.init(3);
+### module.init(3);
 
 
 
