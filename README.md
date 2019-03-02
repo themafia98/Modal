@@ -15,6 +15,13 @@ module.init(); - create demo modal window
 
 
 
+for demo create in your html this
+```
+<div class="container"></div>
+```
+
+
+
 module.init(1);
 ```
   <div data-supermodal ='1'>
