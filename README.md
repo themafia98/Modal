@@ -29,9 +29,12 @@ module.init(1);
             </div>
             <div class="form-field">
                 <label>B-day:</label>
-                <input required type="number" class="input__date-birth birth-day" name="name" placeholder="Day"> -
-                <input required type="number" class="input__date-birth birth-month"  name="name" placeholder="Mounth"> -
-                <input required type="number" class="input__date-birth birth-year"  name="name" placeholder="Ywar">
+                <input required type="number" class="input__date-birth birth-day" 
+                name="name" placeholder="Day"> -
+                <input required type="number" class="input__date-birth birth-month"  
+                name="name" placeholder="Mounth"> -
+                <input required type="number" class="input__date-birth birth-year"  
+                name="name" placeholder="Ywar">
             </div>
         </main>
 
@@ -55,7 +58,10 @@ module.init(2);
 
             <main class="modal__content">
 
-                <iframe width="550" height="235" src="https://www.youtube.com/embed/HikrioqKxw4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe width="550" height="235" 
+                src="https://www.youtube.com/embed/HikrioqKxw4" frameborder="0"
+                allow="accelerometer; autoplay; encrypted-media; gyroscope; 
+                picture-in-picture" allowfullscreen></iframe>
 
             </main>
         </div>
@@ -73,7 +79,8 @@ data-supermodelTitle = 'data-supermodelTitle' - title
 data-supermodalContent="modalContent" - content
 
 ```
-    <div data-supermodal ='3' data-supermodelTitle = 'data-supermodelTitle' data-supermodalContent="modalContent">
+    <div data-supermodal ='3' data-supermodelTitle = 
+    'data-supermodelTitle' data-supermodalContent="modalContent">
         <div class="modal-overlay modal_closed" ></div>
         <div class="modal modal_closed">
             <header class="modal__header">
