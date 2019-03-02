@@ -1,5 +1,4 @@
-# Modal
-Modal window
+# Modal window
 
 
 ### Settings
