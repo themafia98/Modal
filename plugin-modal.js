@@ -7,18 +7,16 @@
 
       let  _dataShow,
           _dataHide,
-          modalOverlay = document.querySelector('.modal-overlay'),
-           modalSave = document.querySelector('.modal-save'),
-           modal = document.querySelector('.modal');
+           modalSave = document.querySelector('.modal-save');
 
     this.init = function(data) {
-    this.show(data);
+        let supermodal = document.querySelector(`[data-supermodal= '${data}']`);
+    this.show(data,supermodal);
     this.hide(data);
     }
 
-    this.show = function (data) {
+    this.show = function (data,supermodal) {
         debugger;
-        let supermodal = document.querySelector(`[data-supermodal= '${data}']`);
 
         if (_dataShow !== undefined) {
             supermodal = document.querySelector(`[data-supermodal= '${_dataShow}']`);
@@ -75,17 +73,13 @@
 /* ------- begin model ------- */
 
 function ModalModel () {
-    let myModalContainer = null,
-        myModalView = null;
-
 
     this.openModal = function(data) {
-        debugger;
         appModalView.show(data);
 
     }
-    this.closeModal = function() {
-        appModalView.hide();
+    this.closeModal = function(data) {
+        appModalView.hide(data);
     }
 }
 
@@ -95,26 +89,23 @@ function ModalModel () {
 /* ----- begin controller ---- */
 
 function ModalController () {
-    let myModalContainer = null,
-        myModalModel = null;
 
     let modalCancel = document.querySelector('.modal-cancel');
     let modalClose = document.querySelector('.modal-close');
     let btn = document.querySelector('.modal-open');
     let modalSave = document.querySelector('.modal-save');
 
-    console.log(modalCancel);
-    debugger;
-    this.init = function(data) { 
-        this.openModal(data);
-        this.hideModal(data);
+
+    this.init = function(data) { // получаем кнопки и вешаем обработчики
+        let supermodal = document.querySelector(`[data-supermodal= '${data}']`);
+        this.openModal(data,supermodal);
+        this.hideModal(data,supermodal);
     }
 
-    this.openModal = function (data) {
-        debugger;
+    this.openModal = function (data,supermodal) {
+
         if (data  === 1) {
             btn.addEventListener('click', appModalModel.openModal);
-            let supermodal = document.querySelector(`[data-supermodal= '${data}']`);
 
             let input = supermodal.getElementsByTagName('input');
             for (let i = 0; i < input.length; i++) {
@@ -133,10 +124,7 @@ function ModalController () {
             }
     };
 
-    this.hideModal = function (data) {
-        debugger;
-        let supermodal = document.querySelector(`[data-supermodal= '${data}']`);
-        supermodal.children;
+    this.hideModal = function (data,supermodal) {
 
         if (data === 1) {
             modalCancel.addEventListener('click', appModalModel.closeModal);
@@ -159,10 +147,6 @@ function ModalController () {
     //вызвать init-методы...
         return  {
             init: function(data) {
-                parseFloat(data);
-
-                let supermodal = document.querySelector(`[data-supermodal= '${data}']`);
-
                 if ( data === 1 ) {
                     data = 1;
                     appModalController.init(data);
@@ -182,4 +166,4 @@ function ModalController () {
     };
     })();
 
-
+    module.init(3);
