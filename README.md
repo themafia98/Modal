@@ -11,7 +11,7 @@ module.init(1);
     <div class="modal modal_closed">
         <header class="modal__header">
             <a href="#" class="modal__close modal-close" title="Close">Close</a>
-            <h2>Введите данные</h2>
+            <h2>Enter</h2>
         </header>
 
         <main class="modal__content">
