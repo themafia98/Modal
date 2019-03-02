@@ -11,6 +11,9 @@ Button
 ```
 
 
+module.init(); - create demo modal window
+
+
 
 module.init(1);
 ```
