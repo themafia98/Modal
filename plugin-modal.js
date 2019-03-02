@@ -6,8 +6,7 @@
     function ModalView() {
 
       let  _dataShow,
-          _dataHide,
-           modalSave = document.querySelector('.modal-save');
+          _dataHide;
 
     this.init = function(data) {
         let supermodal = document.querySelector(`[data-supermodal= '${data}']`);
@@ -18,10 +17,10 @@
     this.show = function (data,supermodal) {
         debugger;
 
+        let modalSave = document.querySelector('.modal-save');
         if (_dataShow !== undefined) {
             supermodal = document.querySelector(`[data-supermodal= '${_dataShow}']`);
         }
-
 
         let input = document.getElementsByTagName('input');
         if (input.length !== 0) {
@@ -29,21 +28,23 @@
                 input[i].value = '';
             }
         }
-
-        if ( (supermodal.hasAttribute('data-supermodelTitle') === true)
-        && (supermodal.hasAttribute('data-supermodalContent') === true)) {
+        debugger;
+        if ( (supermodal.hasAttribute('data-supermodeltitle') === true)
+        && (supermodal.hasAttribute('data-supermodalcontent') === true)) {
             let title = supermodal.querySelector('h2');
             let ctx = supermodal.querySelector('main');
-            let tittleCtx = supermodal.getAttribute('data-supermodelTitle');
-            let Ctx = supermodal.getAttribute('data-supermodalContent');
+            let tittleCtx = supermodal.getAttribute('data-supermodeltitle');
+            let Ctx = supermodal.getAttribute('data-supermodalcontent');
             title.innerHTML = tittleCtx;
             ctx.innerHTML = `<p>${Ctx}<p>`;
         }
 
 
         if (_dataShow !== undefined) {
-            modalSave.disabled = true;
-            modalSave.style.opacity = '0.5';
+            if(modalSave) {
+                modalSave.disabled = true;
+                modalSave.style.opacity = '0.5';
+            }
             supermodal.children[0].classList.remove('modal_closed');
             supermodal.children[1].classList.remove('modal_closed');
             }
@@ -57,6 +58,7 @@
     this.hide = function (data) {
         let supermodal = document.querySelector(`[data-supermodal= '${_dataHide}']`);
 
+
         if (_dataHide !== undefined) {
                 supermodal.children[0].classList.add('modal_closed');
                 supermodal.children[1].classList.add('modal_closed');
@@ -64,6 +66,30 @@
             else if(_dataHide === undefined) {
                 _dataHide = data;
             }
+    }
+
+    this.createModal = function () {
+        debugger;
+        let container = document.querySelector('.container');
+        let newModal = document.createElement('div');
+        newModal.setAttribute('data-supermodal', '3');
+        newModal.setAttribute('data-supermodeltitle', 'supermodeltitle');
+        newModal.setAttribute('data-supermodalcontent', 'supermodalcontent');
+        newModal.innerHTML =
+            ' <div class="modal-overlay modal_closed" ></div>\n' +
+            '<div class="modal modal_closed">\n' +
+            '<header class="modal__header">\n' +
+            '<a href="#" class="modal__close" id="modal-close" title="Закрыть модальное окно">Закрыть</a>\n' +
+            '<h2></h2>\n' +
+            '</header>\n' +
+            '<main class="modal__content"></main>\n' +
+            '<footer class="modal__footer">\n' +
+            '<button class="modal__cancel" title="Отмена">Отмена</button>\n' +
+            '</footer>\n' +
+            '</div>';
+
+        container.appendChild(newModal);
+
     }
 
 
@@ -97,7 +123,12 @@ function ModalController () {
 
 
     this.init = function(data) { // получаем кнопки и вешаем обработчики
+        debugger;
         let supermodal = document.querySelector(`[data-supermodal= '${data}']`);
+        if (!supermodal) {
+            appModalView.createModal();
+            supermodal = document.querySelector(`[data-supermodal= '${data}']`);
+        }
         this.openModal(data,supermodal);
         this.hideModal(data,supermodal);
     }
@@ -147,6 +178,11 @@ function ModalController () {
     //вызвать init-методы...
         return  {
             init: function(data) {
+                debugger;
+                if(data === undefined) {
+                    data = 3;
+                }
+
                 if ( data === 1 ) {
                     data = 1;
                     appModalController.init(data);
@@ -166,4 +202,4 @@ function ModalController () {
     };
     })();
 
-    module.init(3);
+    module.init();
