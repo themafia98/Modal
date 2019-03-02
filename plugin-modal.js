@@ -105,7 +105,7 @@ function ModalController () {
 
     console.log(modalCancel);
     debugger;
-    this.init = function(data) { // получаем кнопки и вешаем обработчики
+    this.init = function(data) { 
         this.openModal(data);
         this.hideModal(data);
     }
@@ -182,4 +182,4 @@ function ModalController () {
     };
     })();
 
-    module.init(2);
+
